@@ -9,11 +9,11 @@ import { Platform } from 'react-native';
 
 export const Colors = {
   light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+    text: '#1C221F',
+    background: '#F4F6F5',
+    backgroundElement: '#FFFFFF',
+    backgroundSelected: '#E8EFE9',
+    textSecondary: '#727E78',
   },
   dark: {
     text: '#ffffff',
@@ -24,17 +24,28 @@ export const Colors = {
   },
 } as const;
 
+export const ElviraTheme = {
+  primary: '#3A5340',      // Premium forest green
+  primaryLight: '#E8EFE9', // Light green background card
+  primaryDark: '#26372A',  // Dark green press state
+  bgDark: '#F4F6F5',       // Light off-white/gray background
+  bgCard: '#FFFFFF',       // Pure white card background
+  border: '#E2E6E4',       // Subtle light gray-green border
+  textLight: '#1C221F',    // Dark charcoal/slate text
+  textMuted: '#727E78',    // Muted gray-green text
+  accent: '#EAB308',       // Amber accent for warnings/top items
+  red: '#EF4444',          // Danger/low stock highlight
+  white: '#FFFFFF',
+  black: '#000000',
+};
+
 export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
 
 export const Fonts = Platform.select({
   ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
     sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
     serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
     mono: 'ui-monospace',
   },
   default: {
