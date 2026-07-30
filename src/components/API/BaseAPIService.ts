@@ -2,7 +2,7 @@ import APIError from './APIError';
 import { Alert } from 'react-native';
 import { storage } from './storage';
 
-const BASE_API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
+const BASE_API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://192.168.0.102:8000/api';
 
 class BaseApiService {
     async request(
