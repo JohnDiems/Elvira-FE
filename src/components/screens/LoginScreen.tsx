@@ -3,7 +3,7 @@ import { storage } from '@/components/API/storage';
 import { Icon } from '@/components/ui/Icon';
 import { ElviraTheme } from '@/constants/theme';
 import React, { useState } from 'react';
-import { ActivityIndicator, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 
 interface LoginScreenProps {
   setCurrentScreen: (screen: any) => void;
@@ -42,9 +42,7 @@ export function LoginScreen({
 
         // Output for easy local testing
         console.log(`[TESTING OTP]: Generated OTP code is: ${response.otp}`);
-        if (typeof window !== 'undefined') {
-          alert(`[MOCK OTP ALERT] OTP code sent to your registered mobile is: ${response.otp}`);
-        }
+        Alert.alert('MOCK OTP', `OTP code sent to your registered mobile is: ${response.otp}`);
 
         setCurrentScreen('otp');
       } else {
@@ -153,7 +151,7 @@ export function LoginScreen({
 
         {/* Signup redirection links */}
         <View style={styles.linksRow}>
-          <TouchableOpacity onPress={() => alert('Boutique Modern POS Info')}>
+          <TouchableOpacity onPress={() => Alert.alert('Info', 'Boutique Modern POS Info')}>
             <Text style={styles.linkTextSecondary}>Learn more about POS</Text>
           </TouchableOpacity>
         </View>

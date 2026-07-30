@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { ElviraTheme } from '@/constants/theme';
 import { Icon } from '@/components/ui/Icon';
 import { BottomNavigation } from '@/components/ui/BottomNavigation';
@@ -24,7 +24,7 @@ export function PrintPreviewScreen({
     setIsPrinting(true);
     setTimeout(() => {
       setIsPrinting(false);
-      alert(`Print Command Sent! Receipt printed on ${printer} (${copies} copy, size: ${paperSize}).`);
+      Alert.alert('Print Command Sent', `Receipt printed on ${printer} (${copies} copy, size: ${paperSize}).`);
       setCurrentScreen('success');
     }, 1500);
   };

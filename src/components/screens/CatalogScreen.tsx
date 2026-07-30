@@ -4,6 +4,7 @@ import { ElviraTheme } from '@/constants/theme';
 import { apiService } from '@/components/API/BaseAPIService';
 import { Icon } from '@/components/ui/Icon';
 import { BottomNavigation } from '@/components/ui/BottomNavigation';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface CatalogScreenProps {
   setCurrentScreen: (screen: any) => void;
@@ -20,6 +21,7 @@ export function CatalogScreen({
   onLogout,
   isDarkMode,
 }: CatalogScreenProps) {
+  const insets = useSafeAreaInsets();
   const [categories, setCategories] = useState<any[]>([]);
   const [products, setProducts] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
@@ -198,7 +200,7 @@ export function CatalogScreen({
       </ScrollView>
 
       {/* Floating Action Button (FAB) (Circular Green Button on Bottom Right) */}
-      <TouchableOpacity style={styles.fabBtn} onPress={handleAddProduct}>
+      <TouchableOpacity style={[styles.fabBtn, { bottom: 76 + insets.bottom }]} onPress={handleAddProduct}>
         <Text style={styles.fabText}>+</Text>
       </TouchableOpacity>
 

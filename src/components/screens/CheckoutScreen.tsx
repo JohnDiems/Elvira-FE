@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { ElviraTheme } from '@/constants/theme';
 import { Icon } from '@/components/ui/Icon';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface CheckoutScreenProps {
   setCurrentScreen: (screen: any) => void;
@@ -24,6 +25,7 @@ export function CheckoutScreen({
   addToCart,
   removeFromCart,
 }: CheckoutScreenProps) {
+  const insets = useSafeAreaInsets();
   const [error, setError] = useState('');
   const [isEditingName, setIsEditingName] = useState(false);
 
@@ -170,7 +172,7 @@ export function CheckoutScreen({
       </ScrollView>
 
       {/* Action Footer */}
-      <View style={styles.footer}>
+      <View style={[styles.footer, { paddingBottom: 12 + insets.bottom, height: 70 + insets.bottom }]}>
         <TouchableOpacity style={styles.processButton} onPress={handleProcessCheckout}>
           <Text style={styles.processButtonText}>Process CheckOut</Text>
         </TouchableOpacity>

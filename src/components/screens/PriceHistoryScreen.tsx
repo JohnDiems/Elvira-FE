@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, ActivityIndicator, Modal, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, ActivityIndicator, Modal, TouchableWithoutFeedback, Alert } from 'react-native';
 import { ElviraTheme } from '@/constants/theme';
 import { apiService } from '@/components/API/BaseAPIService';
 import { Icon } from '@/components/ui/Icon';
@@ -75,7 +75,7 @@ export function PriceHistoryScreen({
       setNewPrice(response.product.selling_price.toString());
       setCostPrice(response.product.cost_price.toString());
       await loadHistory();
-      alert('Price adjustment saved successfully!');
+      Alert.alert('Success', 'Price adjustment saved successfully!');
     } catch (err: any) {
       setError(err.message || 'Failed to update pricing details.');
     } finally {

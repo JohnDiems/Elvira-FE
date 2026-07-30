@@ -4,6 +4,7 @@ import { ElviraTheme } from '@/constants/theme';
 import { apiService } from '@/components/API/BaseAPIService';
 import { Icon } from '@/components/ui/Icon';
 import { BottomNavigation } from '@/components/ui/BottomNavigation';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface RegisterPosScreenProps {
   setCurrentScreen: (screen: any) => void;
@@ -22,6 +23,7 @@ export function RegisterPosScreen({
   isDarkMode,
   alertService,
 }: RegisterPosScreenProps) {
+  const insets = useSafeAreaInsets();
   const [products, setProducts] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null); // null = All
@@ -225,7 +227,7 @@ export function RegisterPosScreen({
 
       {/* Checkout Drawer (Green Pill Style) */}
       {cart.length > 0 ? (
-        <TouchableOpacity style={styles.checkoutPill} onPress={() => setCurrentScreen('checkout')}>
+        <TouchableOpacity style={[styles.checkoutPill, { bottom: 68 + insets.bottom }]} onPress={() => setCurrentScreen('checkout')}>
           <View style={styles.checkoutContent}>
             <Text style={styles.checkoutText}>Review Order ({cartItemsCount})</Text>
             <Text style={styles.checkoutTotal}>•  {formatPrice(cartTotal)}</Text>

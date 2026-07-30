@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Activi
 import { ElviraTheme } from '@/constants/theme';
 import { apiService } from '@/components/API/BaseAPIService';
 import { Icon } from '@/components/ui/Icon';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface PaymentScreenProps {
   setCurrentScreen: (screen: any) => void;
@@ -21,6 +22,7 @@ export function PaymentScreen({
   tableNumber,
   setCurrentOrder,
 }: PaymentScreenProps) {
+  const insets = useSafeAreaInsets();
   const [paymentMethod, setPaymentMethod] = useState<'cash' | 'credit_card' | 'e_wallet'>('cash');
   const [paymentProvider, setPaymentProvider] = useState<string | null>(null);
   const [amountReceived, setAmountReceived] = useState('50.000'); // Pre-fill with mockup value
@@ -227,7 +229,7 @@ export function PaymentScreen({
       </ScrollView>
 
       {/* Footer Confirm Payment Button */}
-      <View style={styles.footer}>
+      <View style={[styles.footer, { paddingBottom: 12 + insets.bottom, height: 72 + insets.bottom }]}>
         <View style={styles.footerContent}>
           <View style={styles.footerLeft}>
             <Text style={styles.footerTotalLabel}>Total</Text>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { ElviraTheme } from '@/constants/theme';
 import { Icon } from '@/components/ui/Icon';
 import { BottomNavigation } from '@/components/ui/BottomNavigation';
@@ -26,7 +26,7 @@ export function SuccessScreen({
   };
 
   const handleSend = () => {
-    alert('Mock Action: Receipt sent to customer via email/SMS!');
+    Alert.alert('Receipt Sent', 'Mock Action: Receipt sent to customer via email/SMS!');
   };
 
   const formatPrice = (price: number) => {
