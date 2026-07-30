@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { ElviraTheme } from '@/constants/theme';
 import { Icon } from '@/components/ui/Icon';
+import { BottomNavigation } from '@/components/ui/BottomNavigation';
 
 interface PrintPreviewScreenProps {
   setCurrentScreen: (screen: any) => void;
@@ -213,27 +214,11 @@ export function PrintPreviewScreen({
       </ScrollView>
 
       {/* Bottom Navigation Bar */}
-      <View style={styles.navigationBar}>
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('hub')}>
-          <Icon name="home" size={20} color={ElviraTheme.textMuted} />
-          <Text style={styles.navText}>Hub</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('register_pos')}>
-          <Icon name="shop" size={20} color={ElviraTheme.textMuted} />
-          <Text style={styles.navText}>Register</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('orders_list')}>
-          <Icon name="catalog" size={20} color={ElviraTheme.primary} />
-          <Text style={[styles.navText, styles.activeNavText]}>Orders</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('settings')}>
-          <Icon name="settings" size={20} color={ElviraTheme.textMuted} />
-          <Text style={styles.navText}>Settings</Text>
-        </TouchableOpacity>
-      </View>
+      <BottomNavigation
+        currentScreen="orders_list"
+        setCurrentScreen={setCurrentScreen}
+        isDarkMode={false}
+      />
     </View>
   );
 }
@@ -539,31 +524,5 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
   },
-  navigationBar: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 56,
-    backgroundColor: '#FFFFFF',
-    borderTopWidth: 1,
-    borderColor: ElviraTheme.border,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  navItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 4,
-  },
-  navText: {
-    fontSize: 9,
-    color: ElviraTheme.textMuted,
-    fontWeight: '600',
-    marginTop: 2,
-  },
-  activeNavText: {
-    color: ElviraTheme.primary,
-  },
+
 });

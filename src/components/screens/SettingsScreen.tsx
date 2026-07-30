@@ -4,6 +4,7 @@ import { ElviraTheme } from '@/constants/theme';
 import { apiService } from '@/components/API/BaseAPIService';
 import { storage } from '@/components/API/storage';
 import { Icon } from '@/components/ui/Icon';
+import { BottomNavigation } from '@/components/ui/BottomNavigation';
 
 interface SettingsScreenProps {
   setCurrentScreen: (screen: any) => void;
@@ -531,32 +532,11 @@ export function SettingsScreen({
       </Modal>
 
       {/* Bottom Navigation Bar */}
-      <View style={styles.navigationBar}>
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('hub')}>
-          <Icon name="home" size={20} color={isDarkMode ? '#9CA3AF' : ElviraTheme.textMuted} />
-          <Text style={styles.navText}>Home</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('register_pos')}>
-          <Icon name="shop" size={20} color={isDarkMode ? '#9CA3AF' : ElviraTheme.textMuted} />
-          <Text style={styles.navText}>Register</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('orders_list')}>
-          <Icon name="catalog" size={20} color={isDarkMode ? '#9CA3AF' : ElviraTheme.textMuted} />
-          <Text style={styles.navText}>Orders</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('catalog')}>
-          <Icon name="cafe" size={20} color={isDarkMode ? '#9CA3AF' : ElviraTheme.textMuted} />
-          <Text style={styles.navText}>Menu</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navItem} onPress={() => setCurrentScreen('settings')}>
-          <Icon name="settings" size={20} color={ElviraTheme.primary} />
-          <Text style={[styles.navText, styles.activeNavText]}>Settings</Text>
-        </TouchableOpacity>
-      </View>
+      <BottomNavigation
+        currentScreen="settings"
+        setCurrentScreen={setCurrentScreen}
+        isDarkMode={isDarkMode}
+      />
     </View>
   );
 }
@@ -798,33 +778,7 @@ const getStyles = (isDark: boolean) => StyleSheet.create({
     textAlign: 'center',
     marginTop: 14,
   },
-  navigationBar: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 56,
-    backgroundColor: isDark ? '#1A1A1A' : '#FFFFFF',
-    borderTopWidth: 1,
-    borderColor: isDark ? '#2D2D2D' : ElviraTheme.border,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  navItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 4,
-  },
-  navText: {
-    fontSize: 9,
-    color: isDark ? '#9CA3AF' : ElviraTheme.textMuted,
-    fontWeight: '600',
-    marginTop: 2,
-  },
-  activeNavText: {
-    color: ElviraTheme.primary,
-  },
+
   // Modal dialog styles
   modalOverlay: {
     flex: 1,
