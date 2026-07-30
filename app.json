@@ -18,7 +18,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.johndiems.ElviraFE"
+      "package": "com.johndiems.ElviraFE",
+      "usesCleartextTraffic": true
     },
     "web": {
       "output": "static",
